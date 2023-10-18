@@ -1,0 +1,64 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Assignment Submission</title>
+</head>
+<body>
+   <h1>Assignment Submission</h1>
+
+   <!-- Your Picture -->
+   <img src="your_picture.jpg" alt="Your Picture" width="150" height="150">
+   
+   <form action="submit.php" method="post" enctype="multipart/form-data">
+       <label for="name">Your Name:</label>
+       <input type="text" id="name" name="name" value="Varsha Baisane" required>
+
+       <label for="id">Your ID:</label>
+       <input type text id="id" name="id" value="1020221593" required>
+
+       <!-- User's Uploaded Picture -->
+       <label for="user_picture">Your Picture (JPG, PNG, or GIF):</label>
+       <input type="file" id="user_picture" name="user_picture" accept=".jpg, .jpeg, .png, .gif" required>
+
+       <!-- Static Assignment Fields -->
+       <label for="assignment1">Assignment 1 (PDF files only):</label>
+       <input type="file" id="assignment1" name="assignment1" accept=".pdf" required>
+
+       <label for="assignment2">Assignment 2 (PDF files only):</label>
+       <input type="file" id="assignment2" name="assignment2" accept=".pdf" required>
+
+       <!-- Dynamic Assignment Fields (JavaScript to add more) -->
+       <div id="dynamic-assignments">
+           <!-- JavaScript will add dynamic fields here -->
+       </div>
+
+       <button type="button" id="add-assignment">Add Assignment</button>
+
+       <input type="submit" value="Submit Assignments">
+   </form>
+
+   <script>
+       // JavaScript to add dynamic assignment fields
+       let assignmentCounter = 3; // Assignments 1 and 2 are static
+
+       document.getElementById("add-assignment").addEventListener("click", function() {
+           const dynamicAssignments = document.getElementById("dynamic-assignments");
+           const newField = document.createElement("input");
+           newField.type = "file";
+           newField.name = "assignment" + assignmentCounter;
+           newField.accept = ".pdf";
+           newField.required = true;
+
+           const label = document.createElement("label");
+           label.for = "assignment" + assignmentCounter;
+           label.textContent = "Assignment " + assignmentCounter + " (PDF files only):";
+
+           dynamicAssignments.appendChild(label);
+           dynamicAssignments.appendChild(newField);
+
+           assignmentCounter++;
+       });
+   </script>
+</body>
+</html>
